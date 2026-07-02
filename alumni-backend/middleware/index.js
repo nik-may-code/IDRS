@@ -13,7 +13,7 @@ const authenticateToken = async (req, res, next) => {
         .json({ success: false, message: "Access token required" });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || "secret");
+    const decoded = jwt.verify(token, process.env.ALUMNI_JWT_SECRET || "secret");
     const user = await Alumni.findById(decoded.id).select("-password");
 
     if (!user) {

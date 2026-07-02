@@ -1,17 +1,21 @@
 const admin = require('firebase-admin');
 const Multer = require('multer');
-const serviceAccount = require('../../serviceAccountKey.json');
+const fs = require('fs');
+const path = require('path');
+const serviceAccountPath = path.resolve(__dirname, '../../serviceAccountKey.json');
+let serviceAccount = null;
+if (fs.existsSync(serviceAccountPath)) {
+  serviceAccount = require(serviceAccountPath);
+}
 
 //1. INITIALIZE FIREBASE ADMIN 
-if (!admin.apps.length) {
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  storageBucket: "notifyexport.firebasestorage.app"  // ✅ Correct format
-
-
+if (!admin.apps.length && serviceAccount) {
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    storageBucket: "notifyexport.firebasestorage.app"  // ✅ Correct format
   });
 }
-const bucket = admin.storage().bucket();
+const bucket = admin.apps.length ? admin.storage().bucket() : null;
 
 //2. CONFIGURE MULTER 
 const multer = Multer({

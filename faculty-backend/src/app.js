@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
 const admin = require("firebase-admin");
-require("dotenv").config(); // Load env vars
+require("dotenv").config({ path: require('path').resolve(__dirname, '../../.env') }); // Load env vars
 
 // Import individual route files
 //const uploadRoutes = require('./routes/upload');
@@ -59,7 +59,7 @@ app.use("/api/tickets", ticketRoutes);
 
 app.use("/api/dashboard", dashboardRoutes);
 // ✅ MongoDB Connection
-const dbUrl = process.env.DATABASE_URL;
+const dbUrl = process.env.FACULTY_DATABASE_URL;
 if (!dbUrl) {
   console.error("FATAL ERROR: DATABASE_URL is not defined in .env");
   process.exit(1);
@@ -71,7 +71,7 @@ mongoose
   .catch((err) => console.error("MongoDB connection error:", err));
 
 // Start Server
-const PORT = process.env.PORT || 5003;
+const PORT = process.env.FACULTY_PORT || 5003;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

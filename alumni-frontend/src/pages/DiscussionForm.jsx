@@ -20,7 +20,7 @@ const DiscussionForm = () => {
     setError("");
     setSubmitting(true);
     try {
-      const author = localStorage.getItem("user_name") || localStorage.getItem("user") || "Alumni User";
+      const author = localStorage.getItem("alumni_user") || "Alumni User";
       await axios.post("/api/discussions/", { title, details, tags, author });
       navigate("/discussionpage");
     } catch (err) {

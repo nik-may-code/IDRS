@@ -25,7 +25,7 @@ exports.login = async (req, res) => {
     username === ADMIN_CREDENTIALS.username &&
     password === ADMIN_CREDENTIALS.password
   ) {
-    if (!process.env.JWT_SECRET) {
+    if (!process.env.ADMIN_JWT_SECRET) {
       console.error("FATAL: JWT_SECRET not set in environment");
       return res
         .status(500)
@@ -34,7 +34,7 @@ exports.login = async (req, res) => {
 
     const token = jwt.sign(
       { username: ADMIN_CREDENTIALS.username, role: "admin" },
-      process.env.JWT_SECRET,
+      process.env.ADMIN_JWT_SECRET,
       { expiresIn: "1d" }
     );
 

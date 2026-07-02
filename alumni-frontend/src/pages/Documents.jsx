@@ -8,7 +8,7 @@ const Documents = () => {
   const [docName, setDocName] = useState("");
   const [status, setStatus] = useState("");
   const [isUploading, setIsUploading] = useState(false);
-  const userName = localStorage.getItem("user_name") || "Alumni User";
+  const userName = localStorage.getItem("alumni_user") || "Alumni User";
 
   // Fetch documents for the alumni module
   const fetchDocuments = async () => {

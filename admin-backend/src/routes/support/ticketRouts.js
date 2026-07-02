@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
     // Send email notification
     console.log('Preparing to send ticket notification email...');
     await transporter.sendMail({
-      from: `"Support System" <${process.env.EMAIL_USER}>`,
+      from: `"Support System" <${process.env.ADMIN_EMAIL_USER}>`,
       to: 'kitswcse3@gmail.com',
       subject: `New Ticket: ${subject}`,
       text: `From: ${email} \n\nIssue: ${issue}`,
@@ -47,8 +47,8 @@ router.get('/', async (req, res) => {
 router.get('/test-mail', async (req, res) => {
   try {
     await transporter.sendMail({
-      from: `"Support System" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER, // send to yourself for testing
+      from: `"Support System" <${process.env.ADMIN_EMAIL_USER}>`,
+      to: process.env.ADMIN_EMAIL_USER, // send to yourself for testing
       subject: 'Test Email',
       text: 'This is a test email from your backend.',
     });
@@ -82,7 +82,7 @@ router.post('/:id/close', async (req, res) => {
     console.log(`Sending closure email to ${ticket.email} for ticket '${ticket.subject}'`);
     try {
       await transporter.sendMail({
-        from: `"Support System" <${process.env.EMAIL_USER}>`,
+        from: `"Support System" <${process.env.ADMIN_EMAIL_USER}>`,
         to: ticket.email,
         subject: `Your Ticket '${ticket.subject}' is Closed`,
         text: `Hello,\n\nYour support ticket (Subject: ${ticket.subject}) has been closed. If you have further questions, please open a new ticket.\n\nThank you!`,

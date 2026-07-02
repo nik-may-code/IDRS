@@ -12,8 +12,8 @@ const connections = {};
 
 const connectAllDBs = async () => {
   try {
-    if (process.env.MONGO_URI) {
-      await mongoose.connect(process.env.MONGO_URI);
+    if (process.env.ADMIN_MONGO_URI) {
+      await mongoose.connect(process.env.ADMIN_MONGO_URI);
       console.log("Connected to Admin DB (default)");
     } else {
       console.warn("MONGO_URI not found in environment, default connection skipped");

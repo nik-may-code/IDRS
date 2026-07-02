@@ -2,9 +2,9 @@ const User = require('../models/user_model');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
+require('dotenv').config({ path: require('path').resolve(__dirname, '../../.env') });
 // Must be 32 bytes for AES-256
-const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY; 
+const ENCRYPTION_KEY = process.env.FACULTY_ENCRYPTION_KEY; 
 const IV_LENGTH = 16;
 
 // --- AES Encryption ---
@@ -67,7 +67,7 @@ exports.login = async (req, res) => {
 
     const token = jwt.sign(
       { id: user._id, faculty_id: user.faculty_id, name: user.name },
-      process.env.JWT_SECRET || 'secret',
+      process.env.FACULTY_JWT_SECRET || 'secret',
       { expiresIn: '30m' }
     );
 

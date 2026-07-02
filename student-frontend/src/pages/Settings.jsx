@@ -15,7 +15,7 @@ const Settings = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const email = localStorage.getItem('email'); // Replace with logged-in user email
+        const email = localStorage.getItem('student_email'); // Replace with logged-in user email
         const response = await fetch(`http://localhost:5001/api/auth/getuser/${email}`);
         const data = await response.json();
 

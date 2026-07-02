@@ -15,9 +15,9 @@ const SideNav = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    localStorage.removeItem("email");
+    localStorage.removeItem("alumni_token");
+    localStorage.removeItem("alumni_user");
+    localStorage.removeItem("alumni_email");
     navigate("/");
   };
 

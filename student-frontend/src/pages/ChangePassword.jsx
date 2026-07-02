@@ -42,7 +42,7 @@ const ChangePassword = () => {
     }
     setLoading(true);
     try {
-      const email = localStorage.getItem("email");
+      const email = localStorage.getItem("student_email");
       const res = await axios.post("/api/auth/changepassword", {
         email,
         currentPassword: form.currentPassword,

@@ -19,9 +19,9 @@ const SideNav = () => {
 
   const handleLogout = () => {
     try {
-      localStorage.removeItem("token"); // Clear token
-      localStorage.removeItem("user");
-      localStorage.removeItem("email"); // Clear user info
+      localStorage.removeItem("student_token"); // Clear token
+      localStorage.removeItem("student_user");
+      localStorage.removeItem("student_email"); // Clear user info
       showAlert("Logged out successfully", "success");
       navigate("/"); // Redirect to login
     } catch (err) {

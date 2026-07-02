@@ -10,14 +10,15 @@ const verifyToken = (req, res, next) => {
       .json({ success: false, message: "Access denied. No token provided." });
   }
 
-  if (!process.env.JWT_SECRET) {
+  if (!process.env.STUDENT_JWT_SECRET) {
+    console.error("FATAL: JWT_SECRET is not set in environment");
     return res
       .status(500)
       .json({ success: false, message: "Server configuration error." });
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.STUDENT_JWT_SECRET);
     req.user = decoded;
     next();
   } catch (err) {

@@ -32,15 +32,15 @@ const loginUser = async (req, res) => {
         .status(401)
         .json({ success: false, message: "Invalid credentials" });
 
-    if (!process.env.JWT_SECRET) {
-      console.error("FATAL: JWT_SECRET is not set in environment");
+    if (!process.env.STUDENT_JWT_SECRET) {
+      console.error("FATAL: STUDENT_JWT_SECRET is not set in environment");
       return res
         .status(500)
         .json({ success: false, message: "Server configuration error" });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1d",
+    const token = jwt.sign({ id: user._id }, process.env.STUDENT_JWT_SECRET, {
+      expiresIn: "30d",
     });
 
     res.json({
@@ -114,14 +114,14 @@ const registerUser = async (req, res) => {
 
     await newUser.save();
 
-    if (!process.env.JWT_SECRET) {
+    if (!process.env.STUDENT_JWT_SECRET) {
       return res
         .status(500)
         .json({ success: false, message: "Server configuration error" });
     }
 
-    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
-      expiresIn: "1d",
+    const token = jwt.sign({ id: newUser._id }, process.env.STUDENT_JWT_SECRET, {
+      expiresIn: "30d",
     });
 
     res.status(201).json({

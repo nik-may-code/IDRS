@@ -3,8 +3,8 @@ import Layout from "../components/Layout";
 import axios from "axios";
 
 const Settings = () => {
-  const userName = localStorage.getItem("user_name") || "Alumni User";
-  const userEmail = localStorage.getItem("user_email") || "alumni@example.com";
+  const userName = localStorage.getItem("alumni_user") || "Alumni User";
+  const userEmail = localStorage.getItem("alumni_email") || "alumni@example.com";
   
   const [passwords, setPasswords] = useState({
     oldPassword: "",
@@ -26,7 +26,7 @@ const Settings = () => {
     
     try {
       // Expecting alumni token in localStorage for authorization (typically managed by axios interceptors if setup, or we pass it here)
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("alumni_token");
       const res = await axios.post(
         "/api/user/change-password",
         {

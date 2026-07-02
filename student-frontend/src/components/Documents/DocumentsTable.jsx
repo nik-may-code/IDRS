@@ -72,7 +72,7 @@ const DocumentsTable = ({ documents, onDelete, sortConfig, onSort }) => (
                 >
                   Download
                 </a>
-                {doc.uploadedBy === localStorage.getItem("user") && (
+                {doc.uploadedBy === localStorage.getItem("student_user") && (
                   <Trash2
                     className="w-4 h-4 text-gray-500 cursor-pointer hover:text-gray-700 transition"
                     onClick={() => onDelete(doc._id, doc.name)}

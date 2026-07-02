@@ -17,7 +17,7 @@ const Dashboard = () => {
   const [error, setError] = useState(null);
 
   // Get user name from localStorage (set during login)
-  const userName = localStorage.getItem('user') || 'Student';
+  const userName = localStorage.getItem('student_user') || 'Student';
 
   useEffect(() => {
     const fetchData = async () => {

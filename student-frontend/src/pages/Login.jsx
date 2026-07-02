@@ -40,9 +40,9 @@ function Login() {
       const data = response.data;
 
       if (data.success) {
-        localStorage.setItem("token", data.token); // ✅ Save token
-        localStorage.setItem("user", data.user.name); // Save user info
-        localStorage.setItem("email", data.user.email);
+        localStorage.setItem("student_token", data.token); // ✅ Save token
+        localStorage.setItem("student_user", data.user.name); // Save user info
+        localStorage.setItem("student_email", data.user.email);
         showAlert("Logged in successfully", "success");
         navigate("/dashboard");
       } else {

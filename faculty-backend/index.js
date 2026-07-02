@@ -1,12 +1,12 @@
 //index.js
 
-require('dotenv').config();
+require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
 const app = require('./src/app');
 const mongoose = require('mongoose');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.FACULTY_PORT || 3000;
 
-mongoose.connect(process.env.DATABASE_URL)
+mongoose.connect(process.env.FACULTY_DATABASE_URL)
   .then(() => {
     console.log('MongoDB connected');
     app.listen(PORT, () => {

@@ -4,7 +4,7 @@ import { HiOutlineCamera } from 'react-icons/hi'; // logo icon
 
 function Header() {
 
-  const loggedInUser = localStorage.getItem('user'); // Fallback to 'Guest' if no user info
+  const loggedInUser = localStorage.getItem('alumni_user'); // Fallback to 'Guest' if no user info
   return (
     <header className="fixed top-0 left-0 w-full h-14 bg-zinc-900 text-white shadow-sm z-50 flex items-center justify-between px-8">
       {/* Logo or Title */}

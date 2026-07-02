@@ -18,7 +18,7 @@ const DocumentPage = () => {
   const navigate = useNavigate();
 
   // Get logged-in username from localStorage (replace as needed)
-  const loggedUser = localStorage.getItem("user");
+  const loggedUser = localStorage.getItem("student_user");
 
   const [activeTab, setActiveTab] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");

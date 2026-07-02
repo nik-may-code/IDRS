@@ -3,7 +3,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 
-dotenv.config(); // Load .env before anything else
+require("dotenv").config({ path: require('path').resolve(__dirname, '../.env') }); // Load .env before anything else
 
 const app = express();
 
@@ -34,7 +34,7 @@ app.use((req, res) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 5003;
+const PORT = process.env.ALUMNI_PORT || 5003;
 app.listen(PORT, () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);
 });

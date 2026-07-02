@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const userName = localStorage.getItem('user_name') || 'Alumni';
+  const userName = localStorage.getItem('alumni_user') || 'Alumni';
 
   const [jobs, setJobs] = useState([]);
   const [events, setEvents] = useState([]);

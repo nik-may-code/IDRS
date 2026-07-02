@@ -18,7 +18,11 @@ const Login = () => {
 
     try {
       const res = await axios.post('/api/auth/login', formData);
-      localStorage.setItem('token', res.data.token); // Optional
+      localStorage.setItem('alumni_token', res.data.token);
+      if (res.data.user) {
+        localStorage.setItem('alumni_user', res.data.user.name || '');
+        localStorage.setItem('alumni_email', res.data.user.email || '');
+      }
       navigate('/dashboard'); // ← navigate on success
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed');

@@ -1,4 +1,4 @@
-require("dotenv").config(); // ✅ MUST be first
+require("dotenv").config({ path: require('path').resolve(__dirname, '../../.env') }); // ✅ MUST be first
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -7,7 +7,7 @@ const Routes = require("./routes");
 const documentRoutes = require("./routes/documents");
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.ADMIN_PORT || 5000;
 
 // Middleware
 const allowedOrigins = [

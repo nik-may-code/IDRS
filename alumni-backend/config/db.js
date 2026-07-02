@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const connectDB = async () => {
   try {
     const mongoURI =
-      process.env.MONGO_URI ||
+      process.env.ALUMNI_MONGO_URI ||
       "mongodb+srv://nikhil:nikhil%4024@idrs.3bjohvf.mongodb.net/alumni-module-copy";
     const conn = await mongoose.connect(mongoURI);
 

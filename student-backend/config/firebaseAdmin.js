@@ -1,11 +1,21 @@
 const admin = require("firebase-admin");
-const serviceAccount = require("./serviceAccountKey.json"); // Replace with actual path
+const fs = require("fs");
+const path = require("path");
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  storageBucket: "idrs-student.firebasestorage.app", // Replace with your bucket
-});
+const serviceAccountPath = path.resolve(__dirname, "./serviceAccountKey.json");
+let bucket = null;
 
-const bucket = admin.storage().bucket();
+if (fs.existsSync(serviceAccountPath)) {
+  const serviceAccount = require(serviceAccountPath);
+  if (!admin.apps.length) {
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount),
+      storageBucket: "idrs-student.firebasestorage.app",
+    });
+  }
+  bucket = admin.storage().bucket();
+} else {
+  console.warn("⚠️  Firebase service account key not found. Document upload features will be disabled.");
+}
 
 module.exports = bucket;

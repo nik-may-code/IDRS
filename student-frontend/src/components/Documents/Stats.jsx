@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Stats = ({ documents }) => {
-  const myUploadsCount = documents.filter(d => d.uploadedBy === localStorage.getItem('user')).length;
+  const myUploadsCount = documents.filter(d => d.uploadedBy === localStorage.getItem('student_user')).length;
 
   return (
     <div className="grid grid-cols-2 gap-6 mb-6">

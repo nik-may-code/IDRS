@@ -12,7 +12,7 @@ const Achievements = () => {
     description: "",
   });
 
-  const userName = localStorage.getItem("user_name") || "Alumni User";
+  const userName = localStorage.getItem("alumni_user") || "Alumni User";
 
   const fetchAchievements = async () => {
     try {

@@ -25,7 +25,7 @@ const UploadDocument = () => {
       data.append("name", formData.name);
       data.append("type", formData.type);
       data.append("category", formData.category);
-      data.append("uploadedBy", formData.uploadedBy || localStorage.getItem("user") || "Student");
+      data.append("uploadedBy", formData.uploadedBy || localStorage.getItem("student_user") || "Student");
       data.append("date", formData.date || new Date().toISOString());
 
       // Send to central Document Microservice (Admin backend on port 5000, proxied via /api/documents)

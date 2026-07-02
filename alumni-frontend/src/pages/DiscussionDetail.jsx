@@ -32,7 +32,7 @@ export default function DiscussionDetail() {
     if (!replyContent.trim()) return;
     setSubmitting(true);
     try {
-      const author = localStorage.getItem("user_name") || localStorage.getItem("user") || "Alumni User";
+      const author = localStorage.getItem("alumni_user") || "Alumni User";
       const res = await axios.post(`/api/discussions/${id}/reply`, { author, content: replyContent });
       if (res.data.success) {
         setDiscussion(res.data.discussion);

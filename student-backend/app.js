@@ -1,10 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+require("dotenv").config({ path: require('path').resolve(__dirname, '../.env') });
 const connectDB = require("./config/db");
-
-// Load environment variables FIRST
-dotenv.config();
 
 const app = express();
 
@@ -55,7 +53,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.STUDENT_PORT || 5001;
 app.listen(PORT, () => {
   console.log(`✅ Student Backend running on port ${PORT}`);
 });
