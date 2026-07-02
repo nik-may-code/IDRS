@@ -1,4 +1,4 @@
 node_modules/
 .env
 PORT=5001
-MONGO_URI=mongodb+srv://nikhil:nikhil%4024@idrs.3bjohvf.mongodb.net/alumni-module
+
