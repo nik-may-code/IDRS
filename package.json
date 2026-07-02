@@ -1,0 +1,35 @@
+{
+  "name": "idrs-erp-system",
+  "version": "1.0.0",
+  "description": "Unified ERP System Runner for IDRS Modules",
+  "scripts": {
+    "install:all": "npm run install:admin:bg && npm run install:admin:fg && npm run install:student:bg && npm run install:student:fg && npm run install:faculty:bg && npm run install:faculty:fg && npm run install:alumni:bg && npm run install:alumni:fg && npm run install:erp",
+    "install:admin:bg": "cd admin-backend && npm install",
+    "install:admin:fg": "cd admin-frontend && npm install",
+    "install:student:bg": "cd student-backend && npm install",
+    "install:student:fg": "cd student-frontend && npm install",
+    "install:faculty:bg": "cd faculty-backend && npm install",
+    "install:faculty:fg": "cd faculty-frontend && npm install",
+    "install:alumni:bg": "cd alumni-backend && npm install",
+    "install:alumni:fg": "cd alumni-frontend && npm install",
+    "install:erp": "cd erp-gateway && npm install",
+    "start": "npm run start:all",
+    "start:all": "concurrently \"npm run start:admin:bg\" \"npm run start:student:bg\" \"npm run start:faculty:bg\" \"npm run start:alumni:bg\" \"npm run start:admin:fg\" \"npm run start:student:fg\" \"npm run start:faculty:fg\" \"npm run start:alumni:fg\" \"npm run start:erp\"",
+    "start:admin:bg": "cd admin-backend && npm run dev",
+    "start:admin:fg": "cd admin-frontend && npm run dev",
+    "start:student:bg": "cd student-backend && npm start",
+    "start:student:fg": "cd student-frontend && npm run dev",
+    "start:faculty:bg": "cd faculty-backend && npm start",
+    "start:faculty:fg": "cd faculty-frontend && npm run dev",
+    "start:alumni:bg": "cd alumni-backend && npm start",
+    "start:alumni:fg": "cd alumni-frontend && npm run dev",
+    "start:erp": "cd erp-gateway && npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "mongoose": "^9.7.3"
+  }
+}
